@@ -12,8 +12,59 @@ include: package:flutter_lints/flutter.yaml
 # https://dart-lang.github.io/linter/lints/index.html.
 linter:
   rules:
-    # avoid_print: false
-    # prefer_final_parameters: true
+    # Declarations
+    prefer_const_declarations: true # Default
+    prefer_final_fields: true # Default
+    prefer_final_locals: false # Default
+    unnecessary_final: true
+    always_specify_types: false # Default - But we still
+    omit_local_variable_types: true
+
+    # Null Operator
+    unnecessary_null_aware_operator_on_extension_on_nullable: true
+    prefer_null_aware_method_calls: true # Default
+    prefer_null_aware_operators: true # Default
+
+    # Other
+    discarded_futures: true
+    always_use_package_imports: true
+    always_declare_return_types: true
+    avoid_void_async: true
+    avoid_dynamic_calls: true
+    prefer_foreach: true
+    prefer_if_elements_to_conditional_expressions: true
+    sized_box_for_whitespace: true
+    slash_for_doc_comments: true
+    use_enums: true # experimental
+    use_named_constants: true
+    unnecessary_to_list_in_spreads: true
+
+    # Default values
+    exhaustive_cases: true
+    file_names: true
+    empty_statements: true
+    prefer_contains: true
+    prefer_single_quotes: true
+    prefer_if_null_operators: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    unnecessary_new: true
+    unnecessary_late: true
+    unnecessary_this: true
+
+analyzer:
+  errors:
+    unnecessary_final: warning
+    always_specify_types: error
+    discarded_futures: error
+    always_use_package_imports: error
+    always_declare_return_types: error
+    avoid_void_async: error
+    avoid_dynamic_calls: error
+    file_names: error
+    exhaustive_cases: error
+    unnecessary_late: error
+
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

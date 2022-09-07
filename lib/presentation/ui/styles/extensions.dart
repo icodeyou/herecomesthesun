@@ -10,6 +10,6 @@ extension CapExtension on String {
     if (length == 0) {
       return "";
     }
-    return split(" ").map((str) => str.capitalize).join(" ");
+    return split(" ").map((String str) => str.capitalize).join(" ");
   }
 }

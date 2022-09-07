@@ -5,7 +5,7 @@ class Decorations {
   static BoxDecoration box = BoxDecoration(
     color: Colors.white,
     borderRadius: const BorderRadius.all(Radius.circular(UI.cornerRadius)),
-    boxShadow: [
+    boxShadow: <BoxShadow>[
       BoxShadow(
         color: Colors.grey.withOpacity(0.5),
         spreadRadius: 5,
