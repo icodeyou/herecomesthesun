@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
 import 'package:herecomesthesun/presentation/ui/widgets/widget_main_button.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class WeatherPage extends StatelessWidget {
+  const WeatherPage({super.key});
 
   @override
   Widget build(BuildContext context) {
