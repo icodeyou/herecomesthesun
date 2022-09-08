@@ -7,7 +7,8 @@ part 'forecast_response.g.dart';
 class ForecastResponse with _$ForecastResponse {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ForecastResponse({
-    required String data,
+    required String cod,
+    required int message,
   }) = _ForecastResponse;
 
   factory ForecastResponse.fromJson(Map<String, dynamic> json) =>
