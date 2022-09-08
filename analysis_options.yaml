@@ -15,9 +15,7 @@ linter:
     # Declarations
     prefer_const_declarations: true # Default
     prefer_final_fields: true # Default
-    prefer_final_locals: false # Default
     unnecessary_final: true
-    always_specify_types: false # Default - But we still
     omit_local_variable_types: true
 
     # Null Operator
@@ -53,9 +51,18 @@ linter:
     unnecessary_this: true
 
 analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
   errors:
+    # ignore
+    prefer_final_locals: ignore # Default
+    always_specify_types: ignore # Default - But we do our best to specify types
+    invalid_annotation_target: ignore
+
+    # warning and error
     unnecessary_final: warning
-    always_specify_types: error
     discarded_futures: error
     always_use_package_imports: error
     always_declare_return_types: error

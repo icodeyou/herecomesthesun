@@ -12,6 +12,10 @@ signing.gradle
 .history
 .svn/
 
+# Freezed
+*.freezed.dart
+*.g.dart
+
 # IntelliJ related
 *.iml
 *.ipr
