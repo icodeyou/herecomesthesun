@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
+import 'package:herecomesthesun/presentation/ui/widgets/widget_main_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,8 +11,17 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(Strings.appName),
       ),
-      body: const Center(
-        child: Text(Strings.hello),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(Strings.hello),
+            MainButtonWidget(
+              message: 'Hello',
+              onPressed: () {},
+            )
+          ],
+        ),
       ),
     );
   }
