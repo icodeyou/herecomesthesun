@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:herecomesthesun/domain/model/city.dart';
 
 part 'weather.freezed.dart';
 
@@ -6,5 +7,12 @@ part 'weather.freezed.dart';
 class Weather with _$Weather {
   const factory Weather({
     required String title,
+    required String description,
+    required City city,
+    required double temp,
+    required double tempMin,
+    required double tempMax,
+    required int humidity,
+    required double gust,
   }) = _Weather;
 }

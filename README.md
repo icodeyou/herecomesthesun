@@ -118,7 +118,7 @@ Feature is finished :
 | [refacto] | refactoring code                            |
 | [doc]     | ajout de documentation du code              |
 
-*Ex of commit message :* **Navigation - [wip] add top right button**
+*Ex of commit message :* **Navigation : [wip] add top right button**
 
 ## Versioning with tags
 
