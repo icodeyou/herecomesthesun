@@ -8,21 +8,22 @@ import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
 import 'package:herecomesthesun/presentation/ui/widgets/widget_main_button.dart';
 import 'package:herecomesthesun/presentation/ui/widgets/widget_progress.dart';
 
-final _homeCurrentWeatherController = StateNotifierProvider.autoDispose<
-    HomeCurrentWeatherController, HomeWeatherState>((ref) {
+final _homeCurrentWeatherController =
+    StateNotifierProvider.autoDispose<HomeWeatherController, HomeWeatherState>(
+        (ref) {
   var weatherUseCase = ref.watch(getWeatherUseCaseProvider);
-  return HomeCurrentWeatherController(getCurrentWeatherUseCase: weatherUseCase);
+  return HomeWeatherController(getCurrentWeatherUseCase: weatherUseCase);
 });
 
 class WeatherPage extends ConsumerStatefulWidget {
   const WeatherPage({super.key});
 
   @override
-  _WeatherPageState createState() => _WeatherPageState();
+  ConsumerState createState() => _WeatherPageState();
 }
 
 class _WeatherPageState extends ConsumerState<WeatherPage> {
-  late final HomeCurrentWeatherController _homeWeatherNotifier;
+  late final HomeWeatherController _homeWeatherNotifier;
 
   @override
   void initState() {
