@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:herecomesthesun/data/entity/forecast_day_entity.dart';
 
 part 'forecast_response.freezed.dart';
 part 'forecast_response.g.dart';
@@ -7,7 +8,7 @@ part 'forecast_response.g.dart';
 class ForecastResponse with _$ForecastResponse {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ForecastResponse({
-    required String cod,
+    required List<ForecastDayEntity> list,
     required int message,
   }) = _ForecastResponse;
 

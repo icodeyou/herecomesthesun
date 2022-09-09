@@ -7,17 +7,20 @@ import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
 
 class HomeWeatherController extends StateNotifier<HomeWeatherState> {
   final GetCurrentWeatherUseCase getCurrentWeatherUseCase;
+  final GetCurrentWeatherUseCase getForecastUseCase;
 
-  HomeWeatherController({required this.getCurrentWeatherUseCase})
+  HomeWeatherController(
+      {required this.getCurrentWeatherUseCase,
+      required this.getForecastUseCase})
       : super(const HomeWeatherState.init());
 
   Future<void> getCurrentWeatherAndForecast(City city) async {
+    state = const HomeWeatherState.loading();
     _getCurrentWeather(city);
     _getForecast(city);
   }
 
   Future<void> _getCurrentWeather(City city) async {
-    state = const HomeWeatherState.loading();
     Weather currentWeather = await getCurrentWeatherUseCase.execute(city);
     CompleteForecast completeForecast =
         CompleteForecast(currentWeather: currentWeather, forecast: null);
@@ -35,5 +38,6 @@ class HomeWeatherController extends StateNotifier<HomeWeatherState> {
     /*return Future.delayed(Duration(seconds: 3)).then((value) {
       state = HomeWeatherState.error(Exception(), city);
     });*/
+    CompleteForecast completeForecast = await getForecastUseCase.execute(city);
   }
 }

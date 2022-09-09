@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:herecomesthesun/data/entity/current_weather_response.dart';
+import 'package:herecomesthesun/data/entity/forecast_response.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:http/http.dart';
 
@@ -28,5 +29,22 @@ class WeatherApi {
     }
 
     return CurrentWeatherResponse.fromJson(jsonDecode(response.body));
+  }
+
+  Future<ForecastResponse> getForecast(City city) async {
+    Map<String, String> queryParameters = {
+      'lat': city.latitude.toStringAsFixed(2),
+      'lon': city.longitude.toStringAsFixed(2),
+      'appId': apiKey
+    };
+
+    Uri request = Uri.https(_baseUrl, '/data/2.5/forecast', queryParameters);
+    Response response = await _httpClient.get(request);
+
+    if (response.statusCode != 200) {
+      throw WeatherRequestFailure();
+    }
+
+    return ForecastResponse.fromJson(jsonDecode(response.body));
   }
 }

@@ -18,7 +18,10 @@ final _homeCurrentWeatherController =
     StateNotifierProvider.autoDispose<HomeWeatherController, HomeWeatherState>(
         (ref) {
   var weatherUseCase = ref.watch(getWeatherUseCaseProvider);
-  return HomeWeatherController(getCurrentWeatherUseCase: weatherUseCase);
+  var forecastUsecase = ref.watch(getForecastUsecaseProvider);
+  return HomeWeatherController(
+      getCurrentWeatherUseCase: weatherUseCase,
+      getForecastUseCase: forecastUsecase);
 });
 
 class WeatherPage extends ConsumerStatefulWidget {

@@ -5,3 +5,7 @@ import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart
 final getWeatherUseCaseProvider = Provider.autoDispose((ref) {
   return GetCurrentWeatherUseCase(ref.watch(weatherRepositoryProvider));
 });
+
+final getForecastUsecaseProvider = Provider.autoDispose((ref) {
+  return
+});

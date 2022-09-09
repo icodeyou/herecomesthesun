@@ -14,7 +14,6 @@ class MainEntity with _$MainEntity {
     required int pressure,
     required int humidity,
     required int sea_level,
-    required int grnd_level,
   }) = _MainEntity;
 
   factory MainEntity.fromJson(Map<String, dynamic> json) =>
