@@ -8,5 +8,5 @@ part 'complete_forecast.freezed.dart';
 class CompleteForecast with _$CompleteForecast {
   const factory CompleteForecast(
       {required Weather currentWeather,
-      required Map<Day, Weather> next5days}) = _CompleteForecast;
+      required Map<Day, Weather>? forecast}) = _CompleteForecast;
 }

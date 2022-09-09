@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/model/complete_forecast.dart';
 import 'package:herecomesthesun/domain/model/day.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
@@ -11,13 +12,13 @@ class HomeWeatherState with _$HomeWeatherState {
 
   const factory HomeWeatherState.init() = _Init;
   const factory HomeWeatherState.loading() = _Loading;
-  const factory HomeWeatherState.currentWeatherLoaded(Weather weather) =
-      _CurrentWeatherLoaded;
-  const factory HomeWeatherState.forecastLoaded(Map<Day, Weather> next5days) =
+  const factory HomeWeatherState.currentWeatherLoaded(
+      CompleteForecast completeForecast) = _CurrentWeatherLoaded;
+  const factory HomeWeatherState.forecastLoaded(Map<Day, Weather> forecast) =
       _ForecastLoaded;
   const factory HomeWeatherState.bothLoaded(CompleteForecast completeForecast) =
       _BothLoaded;
-  const factory HomeWeatherState.error(Exception exception) = _Error;
+  const factory HomeWeatherState.error(Exception exception, City city) = _Error;
 
   bool get isLoading => maybeWhen(loading: () => true, orElse: () => false);
 
@@ -27,7 +28,7 @@ class HomeWeatherState with _$HomeWeatherState {
   bool get isCurrentWeatherLoaded =>
       maybeMap(currentWeatherLoaded: (_) => true, orElse: () => false);
 
-  Weather? get currentWeather =>
+  CompleteForecast? get currentWeather =>
       maybeWhen(currentWeatherLoaded: (data) => data, orElse: () => null);
 
   CompleteForecast? get completeForecast =>
