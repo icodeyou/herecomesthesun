@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:herecomesthesun/data/service/weather_api.dart';
+import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
 import 'package:herecomesthesun/presentation/ui/routing/app_routes.dart';
 import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
@@ -13,6 +17,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    unawaited(() async {
+      //Test
+      print(await WeatherApi.getWeather(City(name: "London")));
+    }.call());
+
     return MaterialApp.router(
       routeInformationProvider: AppRoutes.router.routeInformationProvider,
       routeInformationParser: AppRoutes.router.routeInformationParser,

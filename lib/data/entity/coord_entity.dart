@@ -7,8 +7,8 @@ part 'coord_entity.g.dart';
 class CoordEntity with _$CoordEntity {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory CoordEntity({
-    required String lon,
-    required String lat,
+    required double lon,
+    required double lat,
   }) = _CoordEntity;
 
   factory CoordEntity.fromJson(Map<String, dynamic> json) =>

@@ -11,10 +11,10 @@ part 'current_weather_response.g.dart';
 class CurrentWeatherResponse with _$CurrentWeatherResponse {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory CurrentWeatherResponse(
-      {required List<CoordEntity> coord,
-      required WeatherEntity weather,
-      required MainEntity mainEntity,
-      required WindEntity windEntity}) = _CurrentWeatherResponse;
+      {required CoordEntity coord,
+      required List<WeatherEntity> weather,
+      required MainEntity main,
+      required WindEntity wind}) = _CurrentWeatherResponse;
 
   factory CurrentWeatherResponse.fromJson(Map<String, dynamic> json) =>
       _$CurrentWeatherResponseFromJson(json);
