@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
 import 'package:herecomesthesun/presentation/ui/routing/app_routes.dart';
 import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
 import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

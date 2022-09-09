@@ -3,11 +3,11 @@ import 'package:herecomesthesun/data/mapper/weather_mapper.dart';
 import 'package:herecomesthesun/data/service/weather_api.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/domain/repository/repository.dart';
+import 'package:herecomesthesun/domain/repository/weather_repository.dart';
 
-class RepositoryImpl implements Repository {
+class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherApi _weatherApi;
-  RepositoryImpl(WeatherApi weatherApi) : _weatherApi = weatherApi;
+  WeatherRepositoryImpl(WeatherApi weatherApi) : _weatherApi = weatherApi;
 
   @override
   Future<Weather> getWeather(City city) async {
