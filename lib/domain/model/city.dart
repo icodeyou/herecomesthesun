@@ -6,5 +6,8 @@ part 'city.freezed.dart';
 abstract class City with _$City {
   const factory City({
     required String name,
+    required String Country,
+    required double latitude,
+    required double longitude,
   }) = _City;
 }

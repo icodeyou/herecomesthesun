@@ -6,25 +6,27 @@ import 'package:http/http.dart';
 
 class WeatherRequestFailure implements Exception {}
 
+const apiKey = 'e867aaf3de9fc960cb64326319ab39ad';
+
 class WeatherApi {
   static const _baseUrl = 'api.openweathermap.org';
   final Client _httpClient;
 
   WeatherApi({Client? httpClient}) : _httpClient = httpClient ?? Client();
 
-  static Future<CurrentWeatherResponse> getWeather(City city) async {
+  Future<CurrentWeatherResponse> getWeather(City city) async {
     Map<String, String> queryParameters = {
-      'lat': '44.34',
-      'lon': '44.34',
-      'appId': 'e867aaf3de9fc960cb64326319ab39ad'
+      'lat': city.latitude.toStringAsFixed(2),
+      'lon': city.longitude.toStringAsFixed(2),
+      'appId': apiKey
     };
     Uri request = Uri.https(_baseUrl, '/data/2.5/weather', queryParameters);
-    Response response = await Client().get(request); //FIXME
+    Response response = await _httpClient.get(request);
 
     if (response.statusCode != 200) {
       throw WeatherRequestFailure();
     }
-    var jsonResponse = jsonDecode(response.body);
-    return CurrentWeatherResponse.fromJson(jsonResponse);
+
+    return CurrentWeatherResponse.fromJson(jsonDecode(response.body));
   }
 }
