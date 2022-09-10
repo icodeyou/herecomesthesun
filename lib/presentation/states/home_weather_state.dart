@@ -28,9 +28,15 @@ class HomeWeatherState with _$HomeWeatherState {
   bool get isCurrentWeatherLoaded =>
       maybeMap(currentWeatherLoaded: (_) => true, orElse: () => false);
 
-  CompleteForecast? get currentWeather =>
-      maybeWhen(currentWeatherLoaded: (data) => data, orElse: () => null);
+  CompleteForecast? get completeForecast => maybeWhen(
+      bothLoaded: (completeForecast) => completeForecast, orElse: () => null);
 
-  CompleteForecast? get completeForecast =>
-      maybeWhen(bothLoaded: (data) => data, orElse: () => null);
+  Weather? get currentWeather => maybeWhen(
+      currentWeatherLoaded: (completeForecast) =>
+          completeForecast.currentWeather,
+      orElse: () => null);
+
+  Map<Day, Weather>? get forecast => maybeWhen(
+      currentWeatherLoaded: (completeForecast) => completeForecast.forecast,
+      orElse: () => null);
 }

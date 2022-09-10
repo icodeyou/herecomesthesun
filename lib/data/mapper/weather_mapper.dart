@@ -3,7 +3,7 @@ import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
 
 class WeatherMapper {
-  static Weather domainToData(
+  static Weather dataToDomain(
       CurrentWeatherResponse currentWeatherResponse, City city) {
     return Weather(
         title: currentWeatherResponse.weather.first.main,

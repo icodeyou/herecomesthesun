@@ -9,7 +9,6 @@ class ForecastResponse with _$ForecastResponse {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ForecastResponse({
     required List<ForecastDayEntity> list,
-    required int message,
   }) = _ForecastResponse;
 
   factory ForecastResponse.fromJson(Map<String, dynamic> json) =>

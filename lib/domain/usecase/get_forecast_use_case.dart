@@ -9,6 +9,6 @@ class GetForecastUseCase {
   GetForecastUseCase(WeatherRepository wr) : _weatherRepository = wr;
 
   Future<Map<Day, Weather>> execute(City city) {
-    return _weatherRepository.getWeather(city);
+    return _weatherRepository.getForecast(city);
   }
 }

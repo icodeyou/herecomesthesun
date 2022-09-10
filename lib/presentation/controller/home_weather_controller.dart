@@ -3,11 +3,12 @@ import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/model/complete_forecast.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
+import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
 import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
 
 class HomeWeatherController extends StateNotifier<HomeWeatherState> {
   final GetCurrentWeatherUseCase getCurrentWeatherUseCase;
-  final GetCurrentWeatherUseCase getForecastUseCase;
+  final GetForecastUseCase getForecastUseCase;
 
   HomeWeatherController(
       {required this.getCurrentWeatherUseCase,
@@ -21,16 +22,18 @@ class HomeWeatherController extends StateNotifier<HomeWeatherState> {
   }
 
   Future<void> _getCurrentWeather(City city) async {
-    Weather currentWeather = await getCurrentWeatherUseCase.execute(city);
-    CompleteForecast completeForecast =
-        CompleteForecast(currentWeather: currentWeather, forecast: null);
-    if (state.isForecastLoaded) {
-      // TODO : construct CompleteForecast
-      //state = HomeWeatherState.bothLoaded(completeForecast);
-    } else {
-      state = HomeWeatherState.currentWeatherLoaded(completeForecast);
+    try {
+      Weather currentWeather = await getCurrentWeatherUseCase.execute(city);
+      if (state.isForecastLoaded) {
+        state = HomeWeatherState.bothLoaded(CompleteForecast(
+            currentWeather: currentWeather, forecast: state.forecast));
+      } else {
+        state = HomeWeatherState.currentWeatherLoaded(
+            CompleteForecast(currentWeather: currentWeather, forecast: null));
+      }
+    } on Exception catch (e) {
+      state = HomeWeatherState.error(e, city);
     }
-    // catch error
   }
 
   Future<void> _getForecast(City city) async {
@@ -38,6 +41,18 @@ class HomeWeatherController extends StateNotifier<HomeWeatherState> {
     /*return Future.delayed(Duration(seconds: 3)).then((value) {
       state = HomeWeatherState.error(Exception(), city);
     });*/
-    CompleteForecast completeForecast = await getForecastUseCase.execute(city);
+
+    try {
+      var forecast = await getForecastUseCase.execute(city);
+
+      if (state.isCurrentWeatherLoaded) {
+        state = HomeWeatherState.bothLoaded(CompleteForecast(
+            currentWeather: state.currentWeather!, forecast: forecast));
+      } else {
+        state = HomeWeatherState.forecastLoaded(forecast);
+      }
+    } on Exception catch (e) {
+      state = HomeWeatherState.error(e, city);
+    }
   }
 }

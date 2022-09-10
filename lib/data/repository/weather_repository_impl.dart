@@ -15,12 +15,12 @@ class WeatherRepositoryImpl implements WeatherRepository {
   @override
   Future<Weather> getWeather(City city) async {
     CurrentWeatherResponse dataModel = await _weatherApi.getWeather(city);
-    return WeatherMapper.domainToData(dataModel, city);
+    return WeatherMapper.dataToDomain(dataModel, city);
   }
 
   @override
   Future<Map<Day, Weather>> getForecast(City city) async {
     ForecastResponse dataModel = await _weatherApi.getForecast(city);
-    return ForecastMapper.domainToData(dataModel, city);
+    return ForecastMapper.dataToDomain(dataModel, city);
   }
 }

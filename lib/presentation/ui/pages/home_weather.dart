@@ -135,10 +135,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
       return const ProgressWidget();
     } else {
       return Column(
-        children: const [
-          Text(Strings.nextDays),
-          // TODO
-        ],
+        children: [const Text(Strings.nextDays), Text(forecast.toString())],
       );
     }
   }
