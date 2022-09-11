@@ -24,7 +24,7 @@ class CityDatabase {
     // Uncomment following line to test error from database
     //throw Exception("ERROR GET");
 
-    return await Future.delayed(const Duration(seconds: 2))
+    return await Future.delayed(const Duration(seconds: 1))
         .then((_) => _fakeCities);
   }
 }
