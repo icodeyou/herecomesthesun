@@ -83,19 +83,23 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
   }
 
   Widget _welcomeScreen() {
-    return Container(
-      height: double.infinity,
+    return Padding(
       padding: const EdgeInsets.all(UI.defaultPadding),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            decoration: Decorations.box,
-            padding: const EdgeInsets.all(UI.boxPadding),
-            child: const Text(
-              Strings.welcomeMessage,
-              style: TextStyle(fontSize: UI.textS),
+          Flexible(
+            // Flexible is added to prevent errors when keyboard is briefly
+            // displayed on this page, after popping ChangeCityPage.
+            flex: 1,
+            child: Container(
+              decoration: Decorations.box,
+              padding: const EdgeInsets.all(UI.boxPadding),
+              child: const Text(
+                Strings.welcomeMessage,
+                style: TextStyle(fontSize: UI.textS),
+              ),
             ),
           ),
           MainButtonWidget(
@@ -103,7 +107,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
             onPressed: () async {
               _changeCity();
             },
-          )
+          ),
         ],
       ),
     );
