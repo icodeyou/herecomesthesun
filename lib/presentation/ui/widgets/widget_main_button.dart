@@ -9,17 +9,12 @@ class MainButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return ElevatedButton(
+      onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.all(UI.defaultPadding),
-        child: ElevatedButton(
-          onPressed: onPressed,
-          child: Padding(
-            padding: const EdgeInsets.all(UI.defaultPadding),
-            child: Text(
-              message,
-            ),
-          ),
+        child: Text(
+          message,
         ),
       ),
     );

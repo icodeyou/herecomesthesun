@@ -9,9 +9,10 @@ class ForecastMapper {
       ForecastResponse forecastResponse, City city) {
     Map<Day, Weather> map = {};
 
-    for (var forecastDay in forecastResponse.list) {
-      map.putIfAbsent(Day(timestamp: forecastDay.dt),
-          () => forecastDayEntityToWeather(forecastDay, city));
+    // Only keep one data per day
+    for (int i = 4; i < 40; i = i + 8) {
+      map.putIfAbsent(Day(timestampSeconds: forecastResponse.list[i].dt),
+          () => forecastDayEntityToWeather(forecastResponse.list[i], city));
     }
 
     return map;

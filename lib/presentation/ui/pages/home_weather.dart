@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:herecomesthesun/domain/domain_module.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
@@ -8,6 +9,7 @@ import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/presentation/controller/home_weather_controller.dart';
 import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
+import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
 import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
 import 'package:herecomesthesun/presentation/ui/styles/decorations.dart';
 import 'package:herecomesthesun/presentation/ui/widgets/widget_error_details.dart';
@@ -109,35 +111,95 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
   }
 
   Widget _loadedScreen(CompleteForecast completeForecast) {
-    return Column(
-      children: [
-        _currentWeather(completeForecast.currentWeather),
-        _forecast(completeForecast.forecast)
-      ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(UI.defaultPadding),
+        child: Column(
+          children: [
+            _currentWeather(completeForecast.currentWeather),
+            const SizedBox(height: UI.defaultPadding * 2),
+            _forecast(completeForecast.forecast)
+          ],
+        ),
+      ),
     );
   }
 
   Widget _currentWeather(Weather weather) {
     return Column(
       children: [
+        const SizedBox(height: UI.defaultPadding),
         Text(
           '${weather.city.name}, ${weather.city.country}',
-          style: TextStyle(fontSize: UI.textM),
+          style: const TextStyle(fontSize: UI.textM),
         ),
+        const SizedBox(height: UI.defaultPadding),
         _changeCityButton(),
-        Text(weather.toString()),
+        const SizedBox(height: UI.defaultPadding * 2),
+        Container(
+          decoration: Decorations.box,
+          padding: const EdgeInsets.all(UI.boxPadding),
+          child: Text(weather.toString()),
+        ),
       ],
     );
   }
 
   Widget _forecast(Map<Day, Weather>? forecast) {
-    if (forecast == null) {
-      return const ProgressWidget();
-    } else {
-      return Column(
-        children: [const Text(Strings.nextDays), Text(forecast.toString())],
-      );
-    }
+    return Column(
+      children: [
+        Row(
+          children: const [
+            Expanded(
+              child: Divider(
+                endIndent: UI.defaultPadding,
+                thickness: 1,
+                color: MyColors.text,
+              ),
+            ),
+            Text(Strings.nextDays, style: TextStyle(fontSize: UI.textM)),
+            Expanded(
+              child: Divider(
+                indent: UI.defaultPadding,
+                thickness: 1,
+                color: MyColors.text,
+              ),
+            )
+          ],
+        ),
+        const SizedBox(height: UI.defaultPadding * 2),
+        if (forecast == null) const ProgressWidget() else _caroussel(forecast)
+      ],
+    );
+  }
+
+  Widget _caroussel(Map<Day, Weather> forecast) {
+    return SizedBox(
+      height: 200,
+      child: ListView.separated(
+          shrinkWrap: true,
+          itemCount: forecast.length,
+          separatorBuilder: (context, index) => const SizedBox(width: 15),
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            var key = forecast.keys.elementAt(index);
+
+            return _itemCaroussel(key, forecast[key]!);
+          }),
+    );
+  }
+
+  Widget _itemCaroussel(Day day, Weather forecast) {
+    return Container(
+      width: 150,
+      decoration: Decorations.box,
+      child: Column(
+        children: [
+          Text(day.getDayOfTheWeek()),
+          Text(forecast.toString()),
+        ],
+      ),
+    );
   }
 
   Widget _changeCityButton() {
