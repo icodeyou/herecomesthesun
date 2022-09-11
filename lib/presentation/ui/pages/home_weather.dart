@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:herecomesthesun/domain/domain_module.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/model/complete_forecast.dart';
 import 'package:herecomesthesun/domain/model/day.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/presentation/controller/home_weather_controller.dart';
 import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
+import 'package:herecomesthesun/presentation/ui/routing/app_routes.dart';
 import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
 import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
 import 'package:herecomesthesun/presentation/ui/styles/decorations.dart';
@@ -19,7 +20,7 @@ final _homeCurrentWeatherController =
     StateNotifierProvider.autoDispose<HomeWeatherController, HomeWeatherState>(
         (ref) {
   var weatherUseCase = ref.watch(getWeatherUseCaseProvider);
-  var forecastUsecase = ref.watch(getForecastUsecaseProvider);
+  var forecastUsecase = ref.watch(getForecastUseCaseProvider);
   return HomeWeatherController(
       getCurrentWeatherUseCase: weatherUseCase,
       getForecastUseCase: forecastUsecase);
@@ -100,11 +101,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
           MainButtonWidget(
             message: Strings.pickCity,
             onPressed: () async {
-              _homeWeatherNotifier.getCurrentWeatherAndForecast(const City(
-                  name: 'London',
-                  country: 'UK',
-                  latitude: 43.4,
-                  longitude: 43.4));
+              _changeCity();
             },
           )
         ],
@@ -300,9 +297,14 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
     return MainButtonWidget(
       message: Strings.changeCity,
       onPressed: () async {
-        _homeWeatherNotifier.getCurrentWeatherAndForecast(const City(
-            name: 'London', country: 'UK', latitude: 43.4, longitude: 43.4));
+        _changeCity();
       },
     );
+  }
+
+  void _changeCity() {
+    /*_homeWeatherNotifier.getCurrentWeatherAndForecast(const City(
+        name: 'London', country: 'UK', latitude: 43.4, longitude: 43.4));*/
+    GoRouter.of(context).push(AppRoutes.routeCity);
   }
 }

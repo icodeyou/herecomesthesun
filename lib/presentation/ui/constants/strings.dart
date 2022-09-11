@@ -6,7 +6,7 @@ class Strings {
   static const String errorDefault = 'Une erreur est survenue.';
   static const String retryButton = 'Réessayer';
 
-  // Home Page
+  // HomeWeatherPage
   static const String welcomeMessage =
       'Dear staff, welcome to the app "Here Comes The Sun". \n\nYou will find here all the information you need to prepare the upcoming shows of the Beatles. \n\nTo check the weather, start by selecting a city !';
   static const String pickCity = 'Pick a city';
@@ -17,4 +17,7 @@ class Strings {
   static const String weatherMax = 'Max';
   static const String weatherWind = 'Wind';
   static const String weatherHumidity = 'Humidity';
+
+  // ChangeCityPage
+  static const String titleChangeCityPage = 'Change city';
 }
