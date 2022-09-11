@@ -12,4 +12,9 @@ class Strings {
   static const String pickCity = 'Pick a city';
   static const String changeCity = 'Change city';
   static const String nextDays = 'Next days';
+  static const String today = 'Today';
+  static const String weatherMin = 'Min';
+  static const String weatherMax = 'Max';
+  static const String weatherWind = 'Wind';
+  static const String weatherHumidity = 'Humidity';
 }

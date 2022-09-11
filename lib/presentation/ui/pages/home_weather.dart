@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:herecomesthesun/domain/domain_module.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
@@ -36,6 +35,9 @@ class WeatherPage extends ConsumerStatefulWidget {
 class _WeatherPageState extends ConsumerState<WeatherPage> {
   late final HomeWeatherController _homeWeatherNotifier;
   HomeWeatherState _state = const HomeWeatherState.init();
+
+  final double _forecastItemWidth = 140;
+  final double _forecastItemHeight = 250;
 
   @override
   void initState() {
@@ -138,8 +140,65 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
         const SizedBox(height: UI.defaultPadding * 2),
         Container(
           decoration: Decorations.box,
-          padding: const EdgeInsets.all(UI.boxPadding),
-          child: Text(weather.toString()),
+          padding: const EdgeInsets.all(UI.defaultPadding),
+          child: Stack(
+            children: [
+              const Text(
+                Strings.today,
+                style:
+                    TextStyle(fontSize: UI.textS, fontWeight: FontWeight.bold),
+              ),
+              Center(
+                  child: Column(
+                children: [
+                  const SizedBox(height: UI.defaultPadding),
+                  Text(
+                    weather.title,
+                    style: const TextStyle(fontSize: UI.textL),
+                  ),
+                  Text(
+                    weather.description,
+                    style: const TextStyle(fontSize: UI.textM),
+                  ),
+                  const SizedBox(height: UI.defaultPadding),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            '${weather.temp} °C',
+                            style: const TextStyle(fontSize: UI.textM),
+                          ),
+                          Text(
+                            '${Strings.weatherMin} : ${weather.tempMin} °C',
+                            style: const TextStyle(fontSize: UI.textXS),
+                          ),
+                          Text(
+                            '${Strings.weatherMax} : ${weather.tempMax} °C',
+                            style: const TextStyle(fontSize: UI.textXS),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            '${Strings.weatherWind} : ${weather.gust} m/s',
+                            style: const TextStyle(fontSize: UI.textS),
+                          ),
+                          Text(
+                            '${Strings.weatherHumidity} : ${weather.humidity}%',
+                            style: const TextStyle(fontSize: UI.textS),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: UI.defaultPadding),
+                ],
+              ))
+            ],
+          ),
         ),
       ],
     );
@@ -175,7 +234,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
 
   Widget _caroussel(Map<Day, Weather> forecast) {
     return SizedBox(
-      height: 200,
+      height: _forecastItemHeight,
       child: ListView.separated(
           shrinkWrap: true,
           itemCount: forecast.length,
@@ -183,7 +242,6 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             var key = forecast.keys.elementAt(index);
-
             return _itemCaroussel(key, forecast[key]!);
           }),
     );
@@ -191,12 +249,48 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
 
   Widget _itemCaroussel(Day day, Weather forecast) {
     return Container(
-      width: 150,
+      padding: EdgeInsets.all(UI.defaultPadding),
+      width: _forecastItemWidth,
       decoration: Decorations.box,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(day.getDayOfTheWeek()),
-          Text(forecast.toString()),
+          Center(
+            child: Text(
+              day.getDayOfTheWeek(),
+              style: const TextStyle(
+                  fontSize: UI.textS, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: UI.defaultPadding),
+          Text(forecast.title,
+              style: const TextStyle(
+                  fontSize: UI.textXS, fontWeight: FontWeight.bold)),
+          Text(forecast.description,
+              style: const TextStyle(fontSize: UI.textXS)),
+          const SizedBox(height: UI.defaultPadding),
+          Text(
+            '${forecast.temp} °C',
+            style: const TextStyle(
+                fontSize: UI.textXS, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            '${Strings.weatherMin} : ${forecast.tempMin} °C',
+            style: const TextStyle(fontSize: UI.textXS),
+          ),
+          Text(
+            '${Strings.weatherMax} : ${forecast.tempMax} °C',
+            style: const TextStyle(fontSize: UI.textXS),
+          ),
+          const SizedBox(height: UI.defaultPadding),
+          Text(
+            '${Strings.weatherWind} : ${forecast.gust} m/s',
+            style: const TextStyle(fontSize: UI.textXS),
+          ),
+          Text(
+            '${Strings.weatherHumidity} : ${forecast.humidity}%',
+            style: const TextStyle(fontSize: UI.textXS),
+          ),
         ],
       ),
     );
