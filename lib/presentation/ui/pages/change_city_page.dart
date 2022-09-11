@@ -70,7 +70,7 @@ class ChangeCityPage extends ConsumerWidget {
         error: (error, _) {
           Print.error(error.toString());
           return ErrorDetailsWidget(
-              errorMessage: 'There has been an error loading the cities.',
+              errorDebugMessage: 'There has been an error loading the cities.',
               retryCallback: () async =>
                   ref.read(changeCityProvider.notifier).getCities());
         },

@@ -3,7 +3,7 @@ class Strings {
   static const String appName = 'Here Comes The Sun';
 
   // Widget Error Details
-  static const String errorDefault = 'Une erreur est survenue.';
+  static const String errorDefault = 'An error occured.';
   static const String retryButton = 'Réessayer';
 
   // HomeWeatherPage

@@ -67,7 +67,8 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
         return Column(
           children: [
             ErrorDetailsWidget(
-                errorMessage: 'There has been an error loading the weather.',
+                errorDebugMessage:
+                    'There has been an error loading the weather.',
                 retryCallback: () async {
                   _homeWeatherNotifier.getCurrentWeatherAndForecast(city);
                 }),
