@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:herecomesthesun/data/entity/current_weather_response.dart';
 import 'package:herecomesthesun/data/entity/forecast_response.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
+import 'package:herecomesthesun/presentation/ui/utils/print.dart';
 import 'package:http/http.dart';
 
 class WeatherRequestFailure implements Exception {}
@@ -22,6 +24,11 @@ class WeatherApi {
       'appId': apiKey
     };
     Uri request = Uri.https(_baseUrl, '/data/2.5/weather', queryParameters);
+
+    if (kDebugMode) {
+      Print.info('GET REQUEST : $request');
+    }
+
     Response response = await _httpClient.get(request);
 
     if (response.statusCode != 200) {
@@ -39,6 +46,11 @@ class WeatherApi {
     };
 
     Uri request = Uri.https(_baseUrl, '/data/2.5/forecast', queryParameters);
+
+    if (kDebugMode) {
+      Print.info('GET REQUEST : $request');
+    }
+
     Response response = await _httpClient.get(request);
 
     if (response.statusCode != 200) {

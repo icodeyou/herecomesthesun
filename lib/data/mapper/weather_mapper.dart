@@ -15,6 +15,6 @@ class WeatherMapper {
         tempMin: currentWeatherResponse.main.temp_min,
         tempMax: currentWeatherResponse.main.temp_max,
         humidity: currentWeatherResponse.main.humidity,
-        gust: currentWeatherResponse.wind.gust);
+        gust: currentWeatherResponse.wind.gust ?? 0);
   }
 }

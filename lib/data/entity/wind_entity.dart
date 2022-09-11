@@ -9,7 +9,7 @@ class WindEntity with _$WindEntity {
   const factory WindEntity({
     required double speed,
     required int deg,
-    required double gust,
+    required double? gust,
   }) = _WindEntity;
 
   factory WindEntity.fromJson(Map<String, dynamic> json) =>

@@ -12,7 +12,7 @@ class ChangeCityController extends StateNotifier<AsyncValue<List<City>>> {
   }
 
   Future<void> getCities() async {
-    state = AsyncLoading();
+    state = const AsyncLoading();
     try {
       List<City> cities = await getCitiesUseCase.execute();
       state = AsyncData(cities);

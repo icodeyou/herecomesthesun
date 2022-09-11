@@ -30,6 +30,6 @@ class ForecastMapper {
         tempMin: forecastDayEntity.main.temp_min,
         tempMax: forecastDayEntity.main.temp_max,
         humidity: forecastDayEntity.main.humidity,
-        gust: forecastDayEntity.wind.gust);
+        gust: forecastDayEntity.wind.gust ?? 0);
   }
 }

@@ -16,7 +16,7 @@ import 'package:herecomesthesun/presentation/ui/widgets/widget_error_details.dar
 import 'package:herecomesthesun/presentation/ui/widgets/widget_main_button.dart';
 import 'package:herecomesthesun/presentation/ui/widgets/widget_progress.dart';
 
-final _homeCurrentWeatherController =
+final homeCurrentWeatherController =
     StateNotifierProvider.autoDispose<HomeWeatherController, HomeWeatherState>(
         (ref) {
   var weatherUseCase = ref.watch(getWeatherUseCaseProvider);
@@ -42,13 +42,13 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
 
   @override
   void initState() {
-    _homeWeatherNotifier = ref.read(_homeCurrentWeatherController.notifier);
+    _homeWeatherNotifier = ref.read(homeCurrentWeatherController.notifier);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _state = ref.watch(_homeCurrentWeatherController);
+    _state = ref.watch(homeCurrentWeatherController);
 
     return Scaffold(
       appBar: AppBar(
@@ -102,12 +102,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
               ),
             ),
           ),
-          MainButtonWidget(
-            message: Strings.pickCity,
-            onPressed: () async {
-              _changeCity();
-            },
-          ),
+          _changeCityButton(),
         ],
       ),
     );
@@ -307,8 +302,6 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
   }
 
   void _changeCity() {
-    /*_homeWeatherNotifier.getCurrentWeatherAndForecast(const City(
-        name: 'London', country: 'UK', latitude: 43.4, longitude: 43.4));*/
     GoRouter.of(context).push(AppRoutes.routeCity);
   }
 }
