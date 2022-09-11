@@ -6,6 +6,7 @@ import 'package:herecomesthesun/domain/usecase/get_cities_use_case.dart';
 
 class ChangeCityController extends StateNotifier<AsyncValue<List<City>>> {
   final GetCitiesUseCase getCitiesUseCase;
+  List<City> _cities = [];
 
   ChangeCityController(this.getCitiesUseCase) : super(const AsyncLoading()) {
     unawaited(getCities());
@@ -14,10 +15,17 @@ class ChangeCityController extends StateNotifier<AsyncValue<List<City>>> {
   Future<void> getCities() async {
     state = const AsyncLoading();
     try {
-      List<City> cities = await getCitiesUseCase.execute();
-      state = AsyncData(cities);
+      _cities = await getCitiesUseCase.execute();
+      state = AsyncData(_cities);
     } on Exception catch (e) {
       state = AsyncError(e);
     }
+  }
+
+  void filterCities(String value) {
+    List<City> filteredList = _cities
+        .where((city) => city.name.toLowerCase().contains(value.toLowerCase()))
+        .toList();
+    state = AsyncData(filteredList);
   }
 }

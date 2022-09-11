@@ -29,8 +29,11 @@ class ChangeCityPage extends ConsumerWidget {
         padding: const EdgeInsets.all(UI.defaultPadding),
         child: Column(
           children: [
-            const TextField(
+            TextField(
               autofocus: true,
+              onChanged: (value) {
+                ref.read(changeCityProvider.notifier).filterCities(value);
+              },
             ),
             Expanded(
               child: _results(ref),
@@ -59,7 +62,7 @@ class ChangeCityPage extends ConsumerWidget {
                   GoRouter.of(context).pop();
                 },
                 child: ListTile(
-                    title: Text('${cities[i].name}, ${cities[i].name}')),
+                    title: Text('${cities[i].name}, ${cities[i].country}')),
               );
             },
           );
