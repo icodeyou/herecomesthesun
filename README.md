@@ -29,7 +29,7 @@ To run the test, use the command :
 
 Here is what it should do :
 
-<img src="assets/readme/maestro_test.gif" width="500">
+<img src="assets/readme/maestro_test.gif" width="700">
 
 ## Deliveries
 ### Android
