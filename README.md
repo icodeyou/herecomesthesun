@@ -12,11 +12,23 @@ Here Comes The Sun runs on following devices :
 
 ### Run from Terminal
 To compile the project, use the command :
-
+`flutter pub run build_runner build --delete-conflicting-outputs`
 `flutter run`
 
 If you need to specify the device, run the last command with the argument :
 `-d {DEVICE_ID}`
+
+## Run the tests
+
+The UI tests are made thanks to Maestro.
+Here is the documentation to install Maestro :
+https://maestro.mobile.dev/getting-started/installing-maestro
+
+To run the test, use the command :
+`maestro test test/ui/flow.yaml`
+
+Here is what it should do :
+<img src="assets/readme/test.gif" width="500">
 
 ## Deliveries
 ### Android

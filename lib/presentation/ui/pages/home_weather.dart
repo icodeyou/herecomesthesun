@@ -67,8 +67,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
         return Column(
           children: [
             ErrorDetailsWidget(
-                errorDebugMessage:
-                    'There has been an error loading the weather.',
+                errorDebugMessage: exception.toString(),
                 retryCallback: () async {
                   _homeWeatherNotifier.getCurrentWeatherAndForecast(city);
                 }),
@@ -103,7 +102,12 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
               ),
             ),
           ),
-          _changeCityButton(),
+          MainButtonWidget(
+            message: Strings.pickCity,
+            onPressed: () async {
+              _changeCity();
+            },
+          ),
         ],
       ),
     );
