@@ -22,7 +22,7 @@ class MockDay extends Mock implements Day {}
 class MockWeatherApi extends Mock implements WeatherApi {
   @override
   Future<CurrentWeatherResponse> getWeather(City city) async {
-    return await Future.delayed(Duration(seconds: 1)).then((_) {
+    return await Future.delayed(const Duration(seconds: 1)).then((_) {
       return CurrentWeatherResponse.fromJson(jsonDecode(mockWeatherResponse));
     });
   }

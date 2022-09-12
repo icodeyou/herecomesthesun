@@ -12,9 +12,9 @@ class Print {
   }
 
   static void error(String description, [String? title]) {
-    if (title != null && title != "") {
+    if (title != null && title != '') {
       if (kDebugMode) {
-        print("❌❌❌ $title");
+        print('❌❌❌ $title');
       }
     }
     debugPrintStack(label: '❌ ERROR : $description', maxFrames: 6);

@@ -168,15 +168,15 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                       Column(
                         children: [
                           Text(
-                            '${weather.temp} °C',
+                            '${weather.tempKelvin} °C',
                             style: const TextStyle(fontSize: UI.textM),
                           ),
                           Text(
-                            '${Strings.weatherMin} : ${weather.tempMin} °C',
+                            '${Strings.weatherMin} : ${weather.tempMinKelvin} °C',
                             style: const TextStyle(fontSize: UI.textXS),
                           ),
                           Text(
-                            '${Strings.weatherMax} : ${weather.tempMax} °C',
+                            '${Strings.weatherMax} : ${weather.tempMaxKelvin} °C',
                             style: const TextStyle(fontSize: UI.textXS),
                           ),
                         ],
@@ -250,7 +250,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
 
   Widget _itemCaroussel(Day day, Weather forecast) {
     return Container(
-      padding: EdgeInsets.all(UI.defaultPadding),
+      padding: const EdgeInsets.all(UI.defaultPadding),
       width: _forecastItemWidth,
       decoration: Decorations.box,
       child: Column(
@@ -271,16 +271,16 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
               style: const TextStyle(fontSize: UI.textXS)),
           const SizedBox(height: UI.defaultPadding),
           Text(
-            '${forecast.temp} °C',
+            '${forecast.tempKelvin} °C',
             style: const TextStyle(
                 fontSize: UI.textXS, fontWeight: FontWeight.bold),
           ),
           Text(
-            '${Strings.weatherMin} : ${forecast.tempMin} °C',
+            '${Strings.weatherMin} : ${forecast.tempMinKelvin} °C',
             style: const TextStyle(fontSize: UI.textXS),
           ),
           Text(
-            '${Strings.weatherMax} : ${forecast.tempMax} °C',
+            '${Strings.weatherMax} : ${forecast.tempMaxKelvin} °C',
             style: const TextStyle(fontSize: UI.textXS),
           ),
           const SizedBox(height: UI.defaultPadding),
