@@ -28,7 +28,8 @@ To run the test, use the command :
 `maestro test test/ui/flow.yaml`
 
 Here is what it should do :
-<img src="assets/readme/test.gif" width="500">
+
+<img src="assets/readme/maestro_test.gif" width="500">
 
 ## Deliveries
 ### Android
