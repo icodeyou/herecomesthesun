@@ -25,7 +25,10 @@ If you need to specify the device, run the last command with the argument :
 ### Unit tests
 
 The Unit tests are written in the file `test/unit_tests.dart`
-They can be launch with : `flutter test test/unit_tests.dart`
+
+They can be launch with : 
+
+`flutter test test/unit_tests.dart`
 
 ### UI and Integration tests
 
@@ -73,27 +76,29 @@ lib
 	---/data_module.dart
     ---/entity
     ---/mapper
+    ---/repository
     ---/service (= api)
 ---/domain/
 	---/domain_module.dart
 	---/model
     ---/repository
+    ---/usecase
 ---/run/
 	---/flavor-config.dart
 	---/main-dev.dart
 	---/main-staging.dart
 	---/main-prod.dart
 ---/presentation/
-	---/presentation_module.dart
-	---/state
 	---/controller
+	---/states
 	---/ui/
+		---/constants
 		---/pages
 	    ---/routing
 		---/styles
 	    ---/utils
 	    ---/widgets
----/app.dart
+---/main.dart
 ```
 
 The Directory Tree has been inspired by MVVM Architecture, and follows most of the guidelines of Clean Architecture.
