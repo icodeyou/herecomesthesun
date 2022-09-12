@@ -11,8 +11,10 @@ Here Comes The Sun runs on following devices :
 ## Running the project
 
 ### Run from Terminal
-To compile the project, use the command :
+To compile the project, run the following commands :
+
 `flutter pub run build_runner build --delete-conflicting-outputs`
+
 `flutter run`
 
 If you need to specify the device, run the last command with the argument :
