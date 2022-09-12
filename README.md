@@ -20,7 +20,14 @@ If you need to specify the device, run the last command with the argument :
 
 ## Run the tests
 
-The UI tests are made thanks to Maestro.
+### Unit tests
+
+The Unit tests are written in the file `test/unit_tests.dart`
+They can be launch with : `flutter test test/unit_tests.dart`
+
+### UI and Integration tests
+
+We consider Maestro covers both UI and Integration tests.
 Here is the documentation to install Maestro :
 https://maestro.mobile.dev/getting-started/installing-maestro
 
