@@ -4,7 +4,7 @@ import 'package:herecomesthesun/domain/model/complete_forecast.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
 import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
-import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
+import 'package:herecomesthesun/presentation/state/home_weather_state.dart';
 
 class HomeWeatherController extends StateNotifier<HomeWeatherState> {
   final GetCurrentWeatherUseCase getCurrentWeatherUseCase;
