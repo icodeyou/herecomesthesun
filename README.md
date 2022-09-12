@@ -25,9 +25,11 @@ Here is the documentation to install Maestro :
 https://maestro.mobile.dev/getting-started/installing-maestro
 
 To run the test, use the command :
-`maestro test test/ui/flow.yaml`
+`maestro test test/ui/maestro-{TODAY}.yaml`
 
-Here is what it should do :
+Replace {TODAY} by the current day (ex : monday)
+
+Here is a preview of a successful test :
 
 <img src="assets/readme/maestro_test.gif" width="700">
 

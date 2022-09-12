@@ -1,0 +1,20 @@
+appId: com.icodeyou.herecomesthesun.herecomesthesun
+---
+- launchApp
+- tapOn: "Pick a city"
+- inputText: "London"
+- eraseText: 6
+- inputText: "Monte Car"
+- tapOn: "Monte Carlo, Monaco"
+- tapOn: "Change city"
+- inputText: "on"
+- tapOn: "Silverstone, UK"
+- assertVisible: "Today"
+- assertVisible: "Next days"
+- assertVisible: 
+    text: .*Saturday.*
+- swipe: 
+    start: 200, 1300
+    end: 100, 1300
+- assertVisible: 
+    text: .*Wednesday.*
