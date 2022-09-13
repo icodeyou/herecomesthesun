@@ -23,6 +23,7 @@ dependencies:
   http: ^0.13.5
   mockito: ^5.3.0
   intl: ^0.17.0
+  mocktail: ^0.3.0
 
 dev_dependencies:
   flutter_test:

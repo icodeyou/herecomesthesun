@@ -1,8 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
-import 'package:herecomesthesun/data/entity/current_weather_response.dart';
-import 'package:herecomesthesun/data/entity/forecast_response.dart';
 import 'package:herecomesthesun/data/repository/weather_repository_impl.dart';
 import 'package:herecomesthesun/data/service/weather_api.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
@@ -11,18 +7,26 @@ import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/domain/repository/weather_repository.dart';
 import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
 import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
+import 'package:http/http.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'mock_forecast_response.dart';
 import 'mock_weather_response.dart';
+import 'unit_tests.mocks.dart';
 
 class MockCity extends Mock implements City {}
 
-class MockWeather extends Mock implements Weather {}
+class MockedHttpClient extends Mock implements Client {
+  /*@override
+  Future<Response> get(Uri url, {Map<String, String>? headers}) {
+    return super.get(uri, headers: headers);
+  }*/
+}
 
-class MockDay extends Mock implements Day {}
+/*class MockWeatherApi extends Mock implements WeatherApi {
 
-class MockWeatherApi extends Mock implements WeatherApi {
+
+
   @override
   Future<CurrentWeatherResponse> getWeather(City city) async {
     return await Future.delayed(const Duration(seconds: 1)).then((_) {
@@ -35,19 +39,26 @@ class MockWeatherApi extends Mock implements WeatherApi {
       return ForecastResponse.fromJson(jsonDecode(mockForecastResponse));
     });
   }
-}
+}*/
 
+class FakeUri extends Fake implements Uri {}
+
+@GenerateMocks([MockedHttpClient])
 void main() {
   setUp(() {});
   tearDown(() {});
 
-  MockWeatherApi mockWeatherApi = MockWeatherApi();
+  MockedHttpClient mockHttpClient = MockedHttpClient();
+  WeatherApi mockWeatherApi = WeatherApi(httpClient: mockHttpClient);
+
+  WeatherRepository weatherRepository = WeatherRepositoryImpl(mockWeatherApi);
   MockCity mockCity = MockCity();
 
   group('Weather', () {
     test('get_current_weather', () async {
-      WeatherRepository weatherRepository =
-          WeatherRepositoryImpl(mockWeatherApi);
+      when(mockHttpClient.get(any))
+          .thenReturn(Future(() => Response(mockWeatherResponse, 200)));
+
       GetCurrentWeatherUseCase getCurrentWeatherUseCase =
           GetCurrentWeatherUseCase(weatherRepository);
 
@@ -63,8 +74,6 @@ void main() {
     });
 
     test('get_forecast', () async {
-      WeatherRepository weatherRepository =
-          WeatherRepositoryImpl(mockWeatherApi);
       GetForecastUseCase getForecastUseCase =
           GetForecastUseCase(weatherRepository);
 
