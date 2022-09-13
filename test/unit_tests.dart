@@ -65,7 +65,7 @@ void main() {
   MockCity mockCity = MockCity();
 
   group('Weather', () {
-    test('get_current_weather', () async {
+    test('get_current_weather_success', () async {
       when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
         return Response(mockWeatherResponse, 200);
       }));
@@ -84,7 +84,22 @@ void main() {
       expect(weather.description, 'Overcast clouds');
     });
 
-    test('get_forecast', () async {
+    test('get_current_weather_fail', () async {
+      when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
+        return Response(mockWeatherResponse, 400);
+      }));
+
+      GetCurrentWeatherUseCase getCurrentWeatherUseCase =
+          GetCurrentWeatherUseCase(weatherRepository);
+
+      try {
+        await getCurrentWeatherUseCase.execute(mockCity);
+      } catch (e) {
+        assert(e is WeatherRequestFailure);
+      }
+    });
+
+    test('get_forecast_success', () async {
       when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
         return Response(mockForecastResponse, 200);
       }));
@@ -107,5 +122,20 @@ void main() {
         }
       });
     });
+  });
+
+  test('get_forecast_fail', () async {
+    when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
+      return Response(mockWeatherResponse, 400);
+    }));
+
+    GetForecastUseCase getForecastUseCase =
+        GetForecastUseCase(weatherRepository);
+
+    try {
+      await getForecastUseCase.execute(mockCity);
+    } catch (e) {
+      assert(e is WeatherRequestFailure);
+    }
   });
 }
