@@ -168,15 +168,15 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                       Column(
                         children: [
                           Text(
-                            '${weather.tempKelvin} °C',
+                            '${weather.tempCelsius} °C',
                             style: const TextStyle(fontSize: UI.textM),
                           ),
                           Text(
-                            '${Strings.weatherMin} : ${weather.tempMinKelvin} °C',
+                            '${Strings.weatherMin} : ${weather.tempMinCelsius} °C',
                             style: const TextStyle(fontSize: UI.textXS),
                           ),
                           Text(
-                            '${Strings.weatherMax} : ${weather.tempMaxKelvin} °C',
+                            '${Strings.weatherMax} : ${weather.tempMaxCelsius} °C',
                             style: const TextStyle(fontSize: UI.textXS),
                           ),
                         ],
@@ -271,16 +271,16 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
               style: const TextStyle(fontSize: UI.textXS)),
           const SizedBox(height: UI.defaultPadding),
           Text(
-            '${forecast.tempKelvin} °C',
+            '${forecast.tempCelsius} °C',
             style: const TextStyle(
                 fontSize: UI.textXS, fontWeight: FontWeight.bold),
           ),
           Text(
-            '${Strings.weatherMin} : ${forecast.tempMinKelvin} °C',
+            '${Strings.weatherMin} : ${forecast.tempMinCelsius} °C',
             style: const TextStyle(fontSize: UI.textXS),
           ),
           Text(
-            '${Strings.weatherMax} : ${forecast.tempMaxKelvin} °C',
+            '${Strings.weatherMax} : ${forecast.tempMaxCelsius} °C',
             style: const TextStyle(fontSize: UI.textXS),
           ),
           const SizedBox(height: UI.defaultPadding),

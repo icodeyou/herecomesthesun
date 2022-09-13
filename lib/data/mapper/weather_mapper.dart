@@ -11,9 +11,9 @@ class WeatherMapper {
         description:
             currentWeatherResponse.weather.first.description.capitalize,
         city: city,
-        tempKelvin: currentWeatherResponse.main.temp,
-        tempMinKelvin: currentWeatherResponse.main.temp_min,
-        tempMaxKelvin: currentWeatherResponse.main.temp_max,
+        tempCelsius: currentWeatherResponse.main.temp.kelvinToCelsius,
+        tempMinCelsius: currentWeatherResponse.main.temp_min.kelvinToCelsius,
+        tempMaxCelsius: currentWeatherResponse.main.temp_max.kelvinToCelsius,
         humidity: currentWeatherResponse.main.humidity,
         gust: currentWeatherResponse.wind.gust ?? 0);
   }

@@ -26,9 +26,9 @@ class ForecastMapper {
         title: forecastDayEntity.weather.first.main,
         description: forecastDayEntity.weather.first.description.capitalize,
         city: city,
-        tempKelvin: forecastDayEntity.main.temp,
-        tempMinKelvin: forecastDayEntity.main.temp_min,
-        tempMaxKelvin: forecastDayEntity.main.temp_max,
+        tempCelsius: forecastDayEntity.main.temp.kelvinToCelsius,
+        tempMinCelsius: forecastDayEntity.main.temp_min.kelvinToCelsius,
+        tempMaxCelsius: forecastDayEntity.main.temp_max.kelvinToCelsius,
         humidity: forecastDayEntity.main.humidity,
         gust: forecastDayEntity.wind.gust ?? 0);
   }
