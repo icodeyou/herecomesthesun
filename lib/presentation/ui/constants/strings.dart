@@ -20,4 +20,6 @@ class Strings {
 
   // ChangeCityPage
   static const String titleChangeCityPage = 'Change city';
+  static const String errorLoadingCities =
+      'There has been an error loading the cities.';
 }
