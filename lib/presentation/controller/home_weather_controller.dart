@@ -4,16 +4,18 @@ import 'package:herecomesthesun/domain/model/complete_forecast.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
 import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
-import 'package:herecomesthesun/presentation/state/home_weather_state.dart';
+import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
 
 class HomeWeatherController extends StateNotifier<HomeWeatherState> {
-  final GetCurrentWeatherUseCase getCurrentWeatherUseCase;
-  final GetForecastUseCase getForecastUseCase;
+  final GetCurrentWeatherUseCase _getCurrentWeatherUseCase;
+  final GetForecastUseCase _getForecastUseCase;
 
   HomeWeatherController(
-      {required this.getCurrentWeatherUseCase,
-      required this.getForecastUseCase})
-      : super(const HomeWeatherState.init());
+      {required GetCurrentWeatherUseCase getCurrentWeatherUseCase,
+      required GetForecastUseCase getForecastUseCase})
+      : _getCurrentWeatherUseCase = getCurrentWeatherUseCase,
+        _getForecastUseCase = getForecastUseCase,
+        super(const HomeWeatherState.init());
 
   Future<void> getCurrentWeatherAndForecast(City city) async {
     state = const HomeWeatherState.loading();
@@ -23,7 +25,7 @@ class HomeWeatherController extends StateNotifier<HomeWeatherState> {
 
   Future<void> _getCurrentWeather(City city) async {
     try {
-      Weather currentWeather = await getCurrentWeatherUseCase.execute(city);
+      Weather currentWeather = await _getCurrentWeatherUseCase.execute(city);
       if (state.isForecastLoaded) {
         state = HomeWeatherState.bothLoaded(CompleteForecast(
             currentWeather: currentWeather, forecast: state.forecast));
@@ -43,7 +45,7 @@ class HomeWeatherController extends StateNotifier<HomeWeatherState> {
     });*/
 
     try {
-      var forecast = await getForecastUseCase.execute(city);
+      var forecast = await _getForecastUseCase.execute(city);
 
       if (state.isCurrentWeatherLoaded) {
         state = HomeWeatherState.bothLoaded(CompleteForecast(

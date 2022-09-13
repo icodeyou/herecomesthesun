@@ -122,20 +122,20 @@ void main() {
         }
       });
     });
-  });
 
-  test('get_forecast_fail', () async {
-    when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
-      return Response(mockWeatherResponse, 400);
-    }));
+    test('get_forecast_fail', () async {
+      when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
+        return Response(mockWeatherResponse, 400);
+      }));
 
-    GetForecastUseCase getForecastUseCase =
-        GetForecastUseCase(weatherRepository);
+      GetForecastUseCase getForecastUseCase =
+          GetForecastUseCase(weatherRepository);
 
-    try {
-      await getForecastUseCase.execute(mockCity);
-    } catch (e) {
-      assert(e is WeatherRequestFailure);
-    }
+      try {
+        await getForecastUseCase.execute(mockCity);
+      } catch (e) {
+        assert(e is WeatherRequestFailure);
+      }
+    });
   });
 }

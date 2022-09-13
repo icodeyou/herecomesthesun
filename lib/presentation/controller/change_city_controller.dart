@@ -5,17 +5,19 @@ import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/usecase/get_cities_use_case.dart';
 
 class ChangeCityController extends StateNotifier<AsyncValue<List<City>>> {
-  final GetCitiesUseCase getCitiesUseCase;
+  final GetCitiesUseCase _getCitiesUseCase;
   List<City> _cities = [];
 
-  ChangeCityController(this.getCitiesUseCase) : super(const AsyncLoading()) {
+  ChangeCityController(GetCitiesUseCase getCitiesUseCase)
+      : _getCitiesUseCase = getCitiesUseCase,
+        super(const AsyncLoading()) {
     unawaited(getCities());
   }
 
   Future<void> getCities() async {
     state = const AsyncLoading();
     try {
-      _cities = await getCitiesUseCase.execute();
+      _cities = await _getCitiesUseCase.execute();
       state = AsyncData(_cities);
     } on Exception catch (e) {
       state = AsyncError(e);

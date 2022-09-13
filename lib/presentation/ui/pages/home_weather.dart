@@ -6,7 +6,7 @@ import 'package:herecomesthesun/domain/model/complete_forecast.dart';
 import 'package:herecomesthesun/domain/model/day.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/presentation/controller/home_weather_controller.dart';
-import 'package:herecomesthesun/presentation/state/home_weather_state.dart';
+import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
 import 'package:herecomesthesun/presentation/ui/routing/app_routes.dart';
 import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
