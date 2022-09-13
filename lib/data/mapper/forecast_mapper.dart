@@ -3,7 +3,7 @@ import 'package:herecomesthesun/data/entity/forecast_response.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/model/day.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/presentation/ui/styles/extensions.dart';
+import 'package:herecomesthesun/presentation/ui/utils/extensions.dart';
 
 class ForecastMapper {
   static Map<Day, Weather> dataToDomain(
@@ -26,9 +26,9 @@ class ForecastMapper {
         title: forecastDayEntity.weather.first.main,
         description: forecastDayEntity.weather.first.description.capitalize,
         city: city,
-        temp: forecastDayEntity.main.temp,
-        tempMin: forecastDayEntity.main.temp_min,
-        tempMax: forecastDayEntity.main.temp_max,
+        tempCelsius: forecastDayEntity.main.temp.kelvinToCelsius,
+        tempMinCelsius: forecastDayEntity.main.temp_min.kelvinToCelsius,
+        tempMaxCelsius: forecastDayEntity.main.temp_max.kelvinToCelsius,
         humidity: forecastDayEntity.main.humidity,
         gust: forecastDayEntity.wind.gust ?? 0);
   }

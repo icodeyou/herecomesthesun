@@ -6,7 +6,7 @@ import 'package:herecomesthesun/domain/model/complete_forecast.dart';
 import 'package:herecomesthesun/domain/model/day.dart';
 import 'package:herecomesthesun/domain/model/weather.dart';
 import 'package:herecomesthesun/presentation/controller/home_weather_controller.dart';
-import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
+import 'package:herecomesthesun/presentation/state/home_weather_state.dart';
 import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
 import 'package:herecomesthesun/presentation/ui/routing/app_routes.dart';
 import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
@@ -168,15 +168,15 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                       Column(
                         children: [
                           Text(
-                            '${weather.temp} °C',
+                            '${weather.tempCelsius} °C',
                             style: const TextStyle(fontSize: UI.textM),
                           ),
                           Text(
-                            '${Strings.weatherMin} : ${weather.tempMin} °C',
+                            '${Strings.weatherMin} : ${weather.tempMinCelsius} °C',
                             style: const TextStyle(fontSize: UI.textXS),
                           ),
                           Text(
-                            '${Strings.weatherMax} : ${weather.tempMax} °C',
+                            '${Strings.weatherMax} : ${weather.tempMaxCelsius} °C',
                             style: const TextStyle(fontSize: UI.textXS),
                           ),
                         ],
@@ -250,7 +250,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
 
   Widget _itemCaroussel(Day day, Weather forecast) {
     return Container(
-      padding: EdgeInsets.all(UI.defaultPadding),
+      padding: const EdgeInsets.all(UI.defaultPadding),
       width: _forecastItemWidth,
       decoration: Decorations.box,
       child: Column(
@@ -271,16 +271,16 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
               style: const TextStyle(fontSize: UI.textXS)),
           const SizedBox(height: UI.defaultPadding),
           Text(
-            '${forecast.temp} °C',
+            '${forecast.tempCelsius} °C',
             style: const TextStyle(
                 fontSize: UI.textXS, fontWeight: FontWeight.bold),
           ),
           Text(
-            '${Strings.weatherMin} : ${forecast.tempMin} °C',
+            '${Strings.weatherMin} : ${forecast.tempMinCelsius} °C',
             style: const TextStyle(fontSize: UI.textXS),
           ),
           Text(
-            '${Strings.weatherMax} : ${forecast.tempMax} °C',
+            '${Strings.weatherMax} : ${forecast.tempMaxCelsius} °C',
             style: const TextStyle(fontSize: UI.textXS),
           ),
           const SizedBox(height: UI.defaultPadding),

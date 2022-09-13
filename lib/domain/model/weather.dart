@@ -9,9 +9,9 @@ class Weather with _$Weather {
     required String title,
     required String description,
     required City city,
-    required double temp,
-    required double tempMin,
-    required double tempMax,
+    required double tempCelsius,
+    required double tempMinCelsius,
+    required double tempMaxCelsius,
     required int humidity,
     required double gust,
   }) = _Weather;
