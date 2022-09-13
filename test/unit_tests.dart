@@ -8,15 +8,26 @@ import 'package:herecomesthesun/domain/repository/weather_repository.dart';
 import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
 import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
 import 'package:http/http.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
+import 'mock_forecast_response.dart';
 import 'mock_weather_response.dart';
-import 'unit_tests.mocks.dart';
 
-class MockCity extends Mock implements City {}
+class MockCity extends Mock implements City {
+  @override
+  String get name => 'London';
 
-class MockedHttpClient extends Mock implements Client {
+  @override
+  String get country => 'UK';
+
+  @override
+  double get latitude => 0.0;
+
+  @override
+  double get longitude => 0.0;
+}
+
+class MockHttpClient extends Mock implements Client {
   /*@override
   Future<Response> get(Uri url, {Map<String, String>? headers}) {
     return super.get(uri, headers: headers);
@@ -24,8 +35,6 @@ class MockedHttpClient extends Mock implements Client {
 }
 
 /*class MockWeatherApi extends Mock implements WeatherApi {
-
-
 
   @override
   Future<CurrentWeatherResponse> getWeather(City city) async {
@@ -43,12 +52,13 @@ class MockedHttpClient extends Mock implements Client {
 
 class FakeUri extends Fake implements Uri {}
 
-@GenerateMocks([MockedHttpClient])
 void main() {
-  setUp(() {});
+  setUp(() {
+    registerFallbackValue(FakeUri());
+  });
   tearDown(() {});
 
-  MockedHttpClient mockHttpClient = MockedHttpClient();
+  MockHttpClient mockHttpClient = MockHttpClient();
   WeatherApi mockWeatherApi = WeatherApi(httpClient: mockHttpClient);
 
   WeatherRepository weatherRepository = WeatherRepositoryImpl(mockWeatherApi);
@@ -56,8 +66,9 @@ void main() {
 
   group('Weather', () {
     test('get_current_weather', () async {
-      when(mockHttpClient.get(any))
-          .thenReturn(Future(() => Response(mockWeatherResponse, 200)));
+      when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
+        return Response(mockWeatherResponse, 200);
+      }));
 
       GetCurrentWeatherUseCase getCurrentWeatherUseCase =
           GetCurrentWeatherUseCase(weatherRepository);
@@ -74,6 +85,10 @@ void main() {
     });
 
     test('get_forecast', () async {
+      when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
+        return Response(mockForecastResponse, 200);
+      }));
+
       GetForecastUseCase getForecastUseCase =
           GetForecastUseCase(weatherRepository);
 
