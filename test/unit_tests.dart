@@ -27,28 +27,7 @@ class MockCity extends Mock implements City {
   double get longitude => 0.0;
 }
 
-class MockHttpClient extends Mock implements Client {
-  /*@override
-  Future<Response> get(Uri url, {Map<String, String>? headers}) {
-    return super.get(uri, headers: headers);
-  }*/
-}
-
-/*class MockWeatherApi extends Mock implements WeatherApi {
-
-  @override
-  Future<CurrentWeatherResponse> getWeather(City city) async {
-    return await Future.delayed(const Duration(seconds: 1)).then((_) {
-      return CurrentWeatherResponse.fromJson(jsonDecode(mockWeatherResponse));
-    });
-  }
-
-  Future<ForecastResponse> getForecast(City city) async {
-    return await Future.delayed(const Duration(seconds: 1)).then((_) {
-      return ForecastResponse.fromJson(jsonDecode(mockForecastResponse));
-    });
-  }
-}*/
+class MockHttpClient extends Mock implements Client {}
 
 class FakeUri extends Fake implements Uri {}
 
@@ -124,7 +103,7 @@ void main() {
     });
 
     test('get_forecast_fail', () async {
-      when(() => mockHttpClient.get(any())).thenAnswer(((_) async {
+      when(() => mockHttpClient.post(any())).thenAnswer(((_) async {
         return Response(mockWeatherResponse, 400);
       }));
 
