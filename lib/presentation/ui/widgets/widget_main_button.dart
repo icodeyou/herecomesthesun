@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
+
+import '../styles/constants.dart';
 
 class MainButtonWidget extends StatelessWidget {
   final String message;

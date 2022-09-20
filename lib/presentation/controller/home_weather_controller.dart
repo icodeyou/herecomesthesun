@@ -1,10 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/model/complete_forecast.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
-import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
-import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
+
+import '../../domain/model/city.dart';
+import '../../domain/model/complete_forecast.dart';
+import '../../domain/model/weather.dart';
+import '../../domain/usecase/get_current_weather_use_case.dart';
+import '../../domain/usecase/get_forecast_use_case.dart';
+import '../states/home_weather_state.dart';
 
 class HomeWeatherController extends StateNotifier<HomeWeatherState> {
   final GetCurrentWeatherUseCase _getCurrentWeatherUseCase;

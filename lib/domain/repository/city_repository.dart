@@ -1,4 +1,4 @@
-import 'package:herecomesthesun/domain/model/city.dart';
+import '../model/city.dart';
 
 abstract class CityRepository {
   Future<List<City>> getCities();

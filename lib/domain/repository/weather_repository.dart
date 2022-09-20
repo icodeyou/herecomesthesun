@@ -1,6 +1,6 @@
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/model/day.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
+import '../model/city.dart';
+import '../model/day.dart';
+import '../model/weather.dart';
 
 abstract class WeatherRepository {
   Future<Weather> getWeather(City city);

@@ -1,8 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:herecomesthesun/data/entity/coord_entity.dart';
-import 'package:herecomesthesun/data/entity/main_entity.dart';
-import 'package:herecomesthesun/data/entity/weather_entity.dart';
-import 'package:herecomesthesun/data/entity/wind_entity.dart';
+
+import 'coord_entity.dart';
+import 'main_entity.dart';
+import 'weather_entity.dart';
+import 'wind_entity.dart';
 
 part 'current_weather_response.freezed.dart';
 part 'current_weather_response.g.dart';

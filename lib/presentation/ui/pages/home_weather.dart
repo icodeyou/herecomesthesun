@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:herecomesthesun/domain/domain_module.dart';
-import 'package:herecomesthesun/domain/model/complete_forecast.dart';
-import 'package:herecomesthesun/domain/model/day.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/presentation/controller/home_weather_controller.dart';
-import 'package:herecomesthesun/presentation/states/home_weather_state.dart';
-import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
-import 'package:herecomesthesun/presentation/ui/routing/app_routes.dart';
-import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
-import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
-import 'package:herecomesthesun/presentation/ui/styles/decorations.dart';
-import 'package:herecomesthesun/presentation/ui/widgets/widget_error_details.dart';
-import 'package:herecomesthesun/presentation/ui/widgets/widget_main_button.dart';
-import 'package:herecomesthesun/presentation/ui/widgets/widget_progress.dart';
+
+import '../../../domain/domain_module.dart';
+import '../../../domain/model/complete_forecast.dart';
+import '../../../domain/model/day.dart';
+import '../../../domain/model/weather.dart';
+import '../../controller/home_weather_controller.dart';
+import '../../states/home_weather_state.dart';
+import '../constants/strings.dart';
+import '../routing/app_routes.dart';
+import '../styles/colors.dart';
+import '../styles/constants.dart';
+import '../styles/decorations.dart';
+import '../widgets/widget_error_details.dart';
+import '../widgets/widget_main_button.dart';
+import '../widgets/widget_progress.dart';
 
 final homeCurrentWeatherController =
     StateNotifierProvider.autoDispose<HomeWeatherController, HomeWeatherState>(

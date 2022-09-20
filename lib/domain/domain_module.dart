@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:herecomesthesun/data/data_module.dart';
-import 'package:herecomesthesun/domain/usecase/get_cities_use_case.dart';
-import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
-import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
+
+import '../data/data_module.dart';
+import 'usecase/get_cities_use_case.dart';
+import 'usecase/get_current_weather_use_case.dart';
+import 'usecase/get_forecast_use_case.dart';
 
 final getWeatherUseCaseProvider = Provider.autoDispose((ref) {
   return GetCurrentWeatherUseCase(ref.watch(weatherRepositoryProvider));

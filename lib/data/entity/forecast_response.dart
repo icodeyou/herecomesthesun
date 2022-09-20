@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:herecomesthesun/data/entity/forecast_day_entity.dart';
+
+import 'forecast_day_entity.dart';
 
 part 'forecast_response.freezed.dart';
 part 'forecast_response.g.dart';

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
-import 'package:herecomesthesun/presentation/ui/routing/app_routes.dart';
-import 'package:herecomesthesun/presentation/ui/styles/colors.dart';
-import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
+
+import 'presentation/ui/constants/strings.dart';
+import 'presentation/ui/routing/app_routes.dart';
+import 'presentation/ui/styles/colors.dart';
+import 'presentation/ui/styles/constants.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

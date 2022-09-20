@@ -1,6 +1,6 @@
-import 'package:herecomesthesun/data/service/city_database.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/repository/city_repository.dart';
+import '../../domain/model/city.dart';
+import '../../domain/repository/city_repository.dart';
+import '../service/city_database.dart';
 
 class CityRepositoryImpl implements CityRepository {
   final CityDatabase _cityDatabase;

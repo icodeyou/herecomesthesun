@@ -1,7 +1,7 @@
-import 'package:herecomesthesun/data/entity/current_weather_response.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/presentation/ui/utils/extensions.dart';
+import '../../domain/model/city.dart';
+import '../../domain/model/weather.dart';
+import '../../presentation/ui/utils/extensions.dart';
+import '../entity/current_weather_response.dart';
 
 class WeatherMapper {
   static Weather dataToDomain(

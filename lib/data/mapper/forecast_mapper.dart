@@ -1,9 +1,9 @@
-import 'package:herecomesthesun/data/entity/forecast_day_entity.dart';
-import 'package:herecomesthesun/data/entity/forecast_response.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/model/day.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/presentation/ui/utils/extensions.dart';
+import '../../domain/model/city.dart';
+import '../../domain/model/day.dart';
+import '../../domain/model/weather.dart';
+import '../../presentation/ui/utils/extensions.dart';
+import '../entity/forecast_day_entity.dart';
+import '../entity/forecast_response.dart';
 
 class ForecastMapper {
   static Map<Day, Weather> dataToDomain(

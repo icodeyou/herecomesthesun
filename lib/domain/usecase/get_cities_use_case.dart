@@ -1,5 +1,5 @@
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/repository/city_repository.dart';
+import '../model/city.dart';
+import '../repository/city_repository.dart';
 
 class GetCitiesUseCase {
   final CityRepository _cityRepository;

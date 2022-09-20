@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/usecase/get_cities_use_case.dart';
+
+import '../../domain/model/city.dart';
+import '../../domain/usecase/get_cities_use_case.dart';
 
 class ChangeCityController extends StateNotifier<AsyncValue<List<City>>> {
   final GetCitiesUseCase _getCitiesUseCase;

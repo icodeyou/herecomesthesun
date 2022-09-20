@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:herecomesthesun/domain/model/day.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
+
+import 'day.dart';
+import 'weather.dart';
 
 part 'complete_forecast.freezed.dart';
 

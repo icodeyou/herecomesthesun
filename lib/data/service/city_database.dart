@@ -1,4 +1,4 @@
-import 'package:herecomesthesun/domain/model/city.dart';
+import '../../domain/model/city.dart';
 
 class CityDatabase {
   final List<City> _fakeCities = const [

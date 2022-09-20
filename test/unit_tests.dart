@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:herecomesthesun/data/repository/weather_repository_impl.dart';
 import 'package:herecomesthesun/data/service/weather_api.dart';
 import 'package:herecomesthesun/domain/model/city.dart';
 import 'package:herecomesthesun/domain/model/day.dart';
@@ -10,6 +9,7 @@ import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../lib/data/repository/weather_repository_impl.dart';
 import 'mock_forecast_response.dart';
 import 'mock_weather_response.dart';
 

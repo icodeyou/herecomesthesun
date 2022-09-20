@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:herecomesthesun/presentation/ui/pages/change_city_page.dart';
-import 'package:herecomesthesun/presentation/ui/pages/home_weather.dart';
+
+import '../pages/change_city_page.dart';
+import '../pages/home_weather.dart';
 
 class AppRoutes {
   static const String routeCity = '/city';

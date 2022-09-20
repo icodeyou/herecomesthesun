@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
+
+import 'city.dart';
 
 part 'weather.freezed.dart';
 

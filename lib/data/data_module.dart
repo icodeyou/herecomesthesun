@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:herecomesthesun/data/repository/city_repository_impl.dart';
-import 'package:herecomesthesun/data/repository/weather_repository_impl.dart';
-import 'package:herecomesthesun/data/service/city_database.dart';
-import 'package:herecomesthesun/data/service/weather_api.dart';
+
+import 'repository/city_repository_impl.dart';
+import 'repository/weather_repository_impl.dart';
+import 'service/city_database.dart';
+import 'service/weather_api.dart';
 
 final weatherApiProvider = Provider.autoDispose((ref) {
   return WeatherApi();

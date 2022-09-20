@@ -1,6 +1,6 @@
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/domain/repository/weather_repository.dart';
+import '../model/city.dart';
+import '../model/weather.dart';
+import '../repository/weather_repository.dart';
 
 class GetCurrentWeatherUseCase {
   final WeatherRepository _weatherRepository;

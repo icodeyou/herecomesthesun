@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
-import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
-import 'package:herecomesthesun/presentation/ui/widgets/widget_main_button.dart';
+
+import '../constants/strings.dart';
+import '../styles/constants.dart';
+import 'widget_main_button.dart';
 
 class ErrorDetailsWidget extends StatelessWidget {
   const ErrorDetailsWidget(

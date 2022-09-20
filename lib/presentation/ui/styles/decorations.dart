@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
+
+import 'constants.dart';
 
 class Decorations {
   static BoxDecoration box = BoxDecoration(

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:herecomesthesun/domain/domain_module.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/usecase/get_cities_use_case.dart';
-import 'package:herecomesthesun/presentation/controller/change_city_controller.dart';
-import 'package:herecomesthesun/presentation/ui/constants/strings.dart';
-import 'package:herecomesthesun/presentation/ui/pages/home_weather.dart';
-import 'package:herecomesthesun/presentation/ui/styles/constants.dart';
-import 'package:herecomesthesun/presentation/ui/utils/print.dart';
-import 'package:herecomesthesun/presentation/ui/widgets/widget_error_details.dart';
-import 'package:herecomesthesun/presentation/ui/widgets/widget_progress.dart';
+
+import '../../../domain/domain_module.dart';
+import '../../../domain/model/city.dart';
+import '../../../domain/usecase/get_cities_use_case.dart';
+import '../../controller/change_city_controller.dart';
+import '../constants/strings.dart';
+import '../styles/constants.dart';
+import '../utils/print.dart';
+import '../widgets/widget_error_details.dart';
+import '../widgets/widget_progress.dart';
+import 'home_weather.dart';
 
 final changeCityProvider = StateNotifierProvider.autoDispose<
     ChangeCityController, AsyncValue<List<City>>>((ref) {

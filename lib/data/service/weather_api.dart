@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:herecomesthesun/data/entity/current_weather_response.dart';
-import 'package:herecomesthesun/data/entity/forecast_response.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/presentation/ui/utils/print.dart';
 import 'package:http/http.dart';
+
+import '../../domain/model/city.dart';
+import '../../presentation/ui/utils/print.dart';
+import '../entity/current_weather_response.dart';
+import '../entity/forecast_response.dart';
 
 class WeatherRequestFailure implements Exception {}
 

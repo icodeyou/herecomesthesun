@@ -1,12 +1,12 @@
-import 'package:herecomesthesun/data/entity/current_weather_response.dart';
-import 'package:herecomesthesun/data/entity/forecast_response.dart';
-import 'package:herecomesthesun/data/mapper/forecast_mapper.dart';
-import 'package:herecomesthesun/data/mapper/weather_mapper.dart';
-import 'package:herecomesthesun/data/service/weather_api.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/model/day.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/domain/repository/weather_repository.dart';
+import '../../domain/model/city.dart';
+import '../../domain/model/day.dart';
+import '../../domain/model/weather.dart';
+import '../../domain/repository/weather_repository.dart';
+import '../entity/current_weather_response.dart';
+import '../entity/forecast_response.dart';
+import '../mapper/forecast_mapper.dart';
+import '../mapper/weather_mapper.dart';
+import '../service/weather_api.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherApi _weatherApi;
