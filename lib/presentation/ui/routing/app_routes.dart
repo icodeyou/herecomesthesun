@@ -13,7 +13,7 @@ class AppRoutes {
           return const WeatherPage();
         }),
     GoRoute(
-        path: '/city',
+        path: routeCity,
         builder: (BuildContext context, GoRouterState state) {
           return const ChangeCityPage();
         }),
