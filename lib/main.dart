@@ -14,15 +14,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO Write test
-    /*
-    // Test
-    unawaited(() async {
-      print(await WeatherApi.getWeather(const City(
-          name: 'London', Country: 'UK', latitude: 45.50, longitude: 73.57)));
-    }.call())
-    ;*/
-
     return MaterialApp.router(
       routeInformationProvider: AppRoutes.router.routeInformationProvider,
       routeInformationParser: AppRoutes.router.routeInformationParser,
