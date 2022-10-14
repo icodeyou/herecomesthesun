@@ -47,7 +47,6 @@ class ChangeCityPage extends ConsumerWidget {
   Widget _results(WidgetRef ref) {
     return ref.watch(changeCityProvider).when(
         data: (cities) {
-          //return Text(cities.toString());
           return ListView.separated(
             shrinkWrap: true,
             separatorBuilder: (_, __) =>
