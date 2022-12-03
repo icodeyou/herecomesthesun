@@ -1,6 +1,7 @@
 # Here Comes The Sun
 
 Here Comes The Sun is a mobile application to provide the weather during the tour of The Beatles !
+This projects demonstrates how to use the library Riverpod.
 
 ## Prerequisites
 Here Comes The Sun runs on following devices :
